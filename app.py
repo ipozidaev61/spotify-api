@@ -72,7 +72,7 @@ def get_saved_tracks():
     return jsonify(all_tracks)
 
 
-@app.route('/v1/create-playlist', methods=['POST'])
+@app.route('/v1/playlist', methods=['POST'])
 def create_playlist():
     token = request.headers.get('Authorization')
     if not token:
@@ -105,7 +105,7 @@ def create_playlist():
     return add_tracks_to_playlist(token, track_list, playlist_id)
 
 
-@app.route('/v1/add-to-playlist/<playlist_id>', methods=['POST'])
+@app.route('/v1/playlist/<playlist_id>', methods=['POST'])
 def add_to_existing_playlist(playlist_id):
     token = request.headers.get('Authorization')
     if not token:
