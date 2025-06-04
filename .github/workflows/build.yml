@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build
 
 on:
   push:
@@ -30,15 +30,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ipoz61/spotify-api:latest
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Sync to Glitch Project
-        uses: wei/git-sync@v3
-        with:
-          source_repo: https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          source_branch: master
-          destination_repo: ${{ secrets.GLITCH_GIT_URL }}
-          destination_branch: master
